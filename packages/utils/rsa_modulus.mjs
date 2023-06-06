@@ -4,6 +4,7 @@ import { powmod } from "./utils.mjs";
 // Computes an RSA Modulus (bi-prime)
 export const biprime = async (n, rounds = 10) => {
   // Check if `n` is prime
+  // [TODO] write test for prime
   const prime = async (_n) => {
     if (_n % 2n == 0 || _n <= 1n) return false;
     let d = n - 1;
