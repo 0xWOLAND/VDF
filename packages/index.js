@@ -1,5 +1,2 @@
-import { beacon } from "./utils/beacon.mjs";
-
-const tmp = await beacon();
-console.log("test");
-console.log(tmp);
+import { rand } from "./utils/beacon.mjs";
+import { mod } from "./utils/rsa_modulus.mjs";

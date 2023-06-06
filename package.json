@@ -13,6 +13,17 @@
   },
   "type": "module",
   "scripts": {
-    "main": "node packages/index.js"
+    "main": "node packages/index.js",
+    "lint": "yarn prettier .",
+    "lint:fix": "yarn prettier . --write"
+  },
+  "lint-staged": {
+    "**/{src,test,config,scripts,circuits}/**/*.{ts,json,sol}": [
+      "prettier --write"
+    ]
+  },
+  "packageManager": "yarn@3.2.0",
+  "devDependencies": {
+    "prettier": "2.8.8"
   }
 }

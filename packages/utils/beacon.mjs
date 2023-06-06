@@ -21,3 +21,8 @@ export const beacon = async () => {
   const client = new HttpChainClient(chain, options);
   return await fetchBeacon(client);
 };
+
+export const rand = async (bits = 256) => {
+  const hash = await beacon();
+  return BigInt("0x" + hash.randomness.slice(0, bits));
+};
