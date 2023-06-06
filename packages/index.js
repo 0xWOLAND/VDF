@@ -1,2 +1,2 @@
-import { rand } from "./utils/beacon.mjs";
-import { mod } from "./utils/rsa_modulus.mjs";
+import { rand } from "./utils/src/beacon.mjs";
+import { mod } from "./utils/src/rsa_modulus.mjs";
