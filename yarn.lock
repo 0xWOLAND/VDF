@@ -46,6 +46,11 @@
   dependencies:
     "fetch-blob" "^3.1.2"
 
+"js-sha256@^0.9.0":
+  "integrity" "sha512-sga3MHh9sgQN2+pJ9VYZ+1LPwXOxuBJBA5nrR5/ofPfuiJBE2hnjsaN8se8JznOmGLN2p49Pe5U/ttafcs/apA=="
+  "resolved" "https://registry.npmjs.org/js-sha256/-/js-sha256-0.9.0.tgz"
+  "version" "0.9.0"
+
 "node-domexception@^1.0.0":
   "integrity" "sha512-/jKZoMpw0F8GRwl4/eLROPA3cfcXtLApP0QzLmUT/HuPCZWyB7IY9ZrMeKw2O/nFIqPQB3PVM9aYm0F312AXDQ=="
   "resolved" "https://registry.npmjs.org/node-domexception/-/node-domexception-1.0.0.tgz"

@@ -1,9 +1,13 @@
-export const mulmod = (a, b, m) => {
-  return ((a % m) * (b % m)) % m;
-};
-
 export const powmod = (a, b, m) => {
-  return Array(b)
-    .fill(1)
-    .reduce((acc, _) => mulmod(acc, a, m));
+  let ans = 1n;
+  a %= m;
+
+  while (b > 0) {
+    if (b & 1n) {
+      ans = (ans * a) % m;
+    }
+    b >>= 1n;
+    a = (a * a) % m;
+  }
+  return ans;
 };

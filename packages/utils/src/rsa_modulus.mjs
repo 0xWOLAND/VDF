@@ -1,14 +1,16 @@
-import { rand } from "./beacon.mjs";
+import { RandomNumber } from "./beacon.mjs";
 import { powmod } from "./utils.mjs";
 
 // Computes an RSA Modulus (bi-prime)
-export const biprime = async (n, rounds = 10) => {
+export const mod = async (bits, rounds = 4) => {
+  const r = new RandomNumber();
+  await r.setup(bits / 2);
   // Check if `n` is prime
   // [TODO] write test for prime
   const prime = async (_n) => {
     if (_n % 2n == 0 || _n <= 1n) return false;
-    let d = n - 1;
-    while (d % 2 == 0) d /= 2;
+    let d = _n - 1n;
+    while (d % 2n == 0) d /= 2n;
 
     return (
       (
@@ -16,19 +18,20 @@ export const biprime = async (n, rounds = 10) => {
           Array(rounds)
             .fill(null)
             .map(async () => {
-              const r = await rand();
-              const a = (r % BigInt(_n - 2)) + BigInt(1);
-              let x = powmod(a, d, _n);
+              const rand = r.rand();
+              const a = (rand % BigInt(_n - 4n)) + BigInt(2);
+              let x = powmod(BigInt(a), BigInt(d), BigInt(_n));
 
-              if (x == 1 || x == n - 1) return 1;
+              if (x == 1n || x == _n - 1n) return 1;
 
-              while (d != n - 1) {
-                x = powmod(x, 2, _n);
-                d *= 2;
+              while (d != _n - 1n) {
+                x = powmod(x, 2n, _n);
+                d *= 2n;
 
-                if (x == 1) return 0;
-                if (x == n - 1) return 1;
+                if (x == 1n) return 0;
+                if (x == _n - 1n) return 1;
               }
+              return 0;
             })
         )
       ).reduce((acc, cur) => acc + cur, 0) *
@@ -37,18 +40,21 @@ export const biprime = async (n, rounds = 10) => {
     );
   };
 
-  return (
-    await Promise.all(
-      Array(2)
-        .fill(null)
-        .map(async () => {
-          for (;;) {
-            const r = await rand();
-            if (prime(r)) {
-              return r;
-            }
+  const ans = await Promise.all(
+    Array(2)
+      .fill(null)
+      .map(async () => {
+        for (;;) {
+          const rand = r.rand();
+          const isPrime = await prime(rand);
+          console.log(`${rand} is ${isPrime} prime`);
+          if (isPrime) {
+            console.log(`---`);
+            return rand;
           }
-        })
-    )
-  ).reduce((acc, cur) => acc * cur, 1n);
+        }
+      })
+  );
+  console.log(ans);
+  return ans.reduce((acc, cur) => acc * cur, 1n);
 };
