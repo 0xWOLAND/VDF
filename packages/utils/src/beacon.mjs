@@ -30,11 +30,7 @@ export class RandomNumber {
 
   async setup(_bits = 256) {
     this.bits = _bits;
-    // this.hash = this.toBigInt((await this.beacon()).randomness);
-    this.hash =
-      BigInt(
-        95114240953184166736386021859476025954796474572792528532986746461271672494873n
-      );
+    this.hash = this.toBigInt((await this.beacon()).randomness);
     this.cnt = 0n;
   }
 
