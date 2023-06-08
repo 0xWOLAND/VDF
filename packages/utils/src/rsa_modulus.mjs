@@ -1,10 +1,13 @@
 import { RandomNumber } from "./beacon.mjs";
 import { powmod } from "./utils.mjs";
 
-export const prime = async (_n) => {
+export const prime = async (_n, { rounds, bits }) => {
   if (_n % 2n == 0 || _n <= 1n) return false;
   let d = _n - 1n;
   while (d % 2n == 0) d /= 2n;
+
+  const r = new RandomNumber();
+  await r.setup(bits / 2);
 
   return (
     (
@@ -47,7 +50,7 @@ export const mod = async (bits, rounds = 4) => {
       .map(async () => {
         for (;;) {
           const rand = r.rand();
-          const isPrime = await prime(rand);
+          const isPrime = await prime(rand, { rounds, bits });
           console.log(`${rand} is ${isPrime} prime`);
           if (isPrime) {
             console.log(`---`);
