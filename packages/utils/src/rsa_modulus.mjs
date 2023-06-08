@@ -7,7 +7,7 @@ export const prime = async (_n, { rounds, bits }) => {
   while (d % 2n == 0) d /= 2n;
 
   const r = new RandomNumber();
-  await r.setup(bits / 2);
+  await r.setup(bits);
 
   return (
     (
@@ -40,7 +40,7 @@ export const prime = async (_n, { rounds, bits }) => {
 // Computes an RSA Modulus (bi-prime)
 export const mod = async (bits, rounds = 4) => {
   const r = new RandomNumber();
-  await r.setup(bits / 2);
+  await r.setup(Math.floor(bits / 2));
   // Check if `n` is prime
   // [TODO] write test for prime
 
@@ -50,10 +50,11 @@ export const mod = async (bits, rounds = 4) => {
       .map(async () => {
         for (;;) {
           const rand = r.rand();
-          const isPrime = await prime(rand, { rounds, bits });
-          console.log(`${rand} is ${isPrime} prime`);
+          const isPrime = await prime(rand, {
+            rounds,
+            bits: Math.floor(bits / 2),
+          });
           if (isPrime) {
-            console.log(`---`);
             return rand;
           }
         }
