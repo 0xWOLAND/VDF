@@ -12,4 +12,4 @@ import { mod } from "./utils/src/rsa_modulus.mjs";
 //   });
 
 console.log("--- biprime");
-console.log(await mod(25));
+console.log((await mod(256)).toString());

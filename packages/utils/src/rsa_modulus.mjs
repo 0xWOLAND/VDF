@@ -1,13 +1,22 @@
 import { RandomNumber } from "./beacon.mjs";
 import { powmod } from "./utils.mjs";
 
-export const prime = async (_n, { rounds, bits }) => {
+/**
+ *
+ * @param _n Number being evaluated
+ * @param params rounds and bits being evaluated
+ * @param r RandomNumber() generator, will default to creating a new instance (Unwanted!)
+ * @returns True if `_n` is prime
+ */
+export const prime = async (_n, { rounds, bits }, r = 0) => {
   if (_n % 2n == 0 || _n <= 1n) return false;
   let d = _n - 1n;
   while (d % 2n == 0) d /= 2n;
 
-  const r = new RandomNumber();
-  await r.setup(bits);
+  if (r == 0) {
+    r = new RandomNumber();
+    await r.setup(bits);
+  }
 
   return (
     (
@@ -53,6 +62,7 @@ export const mod = async (bits, rounds = 4) => {
           const isPrime = await prime(rand, {
             rounds,
             bits: Math.floor(bits / 2),
+            r,
           });
           if (isPrime) {
             return rand;
