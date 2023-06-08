@@ -26,7 +26,7 @@ const wasmOut = path.join(
   outDir,
   `${circuitName}_main_js/${circuitName}_main.wasm`
 );
-const wasmOutFinal = path.join(outDir, `${circuitName}_main.wasm`);
+const wasmOutFinal = path.join(outDir, `${circuitName}.wasm`);
 const zkey = path.join(outDir, `${circuitName}.zkey`);
 const vkey = path.join(outDir, `${circuitName}.vkey.json`);
 const ptau = path.join(outDir, ptauName);
