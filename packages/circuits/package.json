@@ -16,6 +16,7 @@
   "type": "commonjs",
   "scripts": {
     "ptau": "node scripts/downloadPtau.mjs",
-    "build": "node scripts/build.mjs"
+    "build": "node scripts/build.mjs",
+    "test": "mocha --exit"
   }
 }

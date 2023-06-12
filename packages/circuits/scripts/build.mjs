@@ -12,7 +12,7 @@ import { copyAndDelete } from "./copyAndDelete.mjs";
 await import("./downloadPtau.mjs");
 
 const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
-const circuitName = "multiplier2";
+const circuitName = "pietrzak";
 
 const outDir = path.join(__dirname, "../build");
 const circuitsDir = path.join(__dirname, "../circuits");
@@ -31,12 +31,18 @@ const zkey = path.join(outDir, `${circuitName}.zkey`);
 const vkey = path.join(outDir, `${circuitName}.vkey.json`);
 const ptau = path.join(outDir, ptauName);
 
-const circuitContents = await fs.promises.readFile(
-  `${inputFileIn}.circom`,
-  "utf8"
-);
+const inputFileOutExists = await fs.promises
+  .stat(inputFileOut)
+  .catch(() => false);
 
-await fs.promises.writeFile(inputFileOut, circuitContents);
+if (!inputFileOutExists) {
+  const circuitContents = await fs.promises.readFile(
+    `${inputFileIn}.circom`,
+    "utf8"
+  );
+
+  await fs.promises.writeFile(inputFileOut, circuitContents);
+}
 
 const circuitOutFileExists = await fs.promises
   .stat(circuitOut)

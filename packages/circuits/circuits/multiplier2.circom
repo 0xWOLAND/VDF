@@ -8,17 +8,4 @@ template Multiplier2() {
     c <== a * b;
 }
 
-template Pietrzak() {
-    signal input N;
-    signal input x;
-    signal input T;
-    signal input y;
-
-    if (T == 1) {
-        y === x * x;
-    }
-
-    
-}
-
 component main = Multiplier2();
