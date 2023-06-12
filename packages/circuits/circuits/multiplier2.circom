@@ -7,5 +7,3 @@ template Multiplier2() {
 
     c <== a * b;
 }
-
-component main = Multiplier2();

@@ -38,22 +38,20 @@ template PietrzakVDF() {
 
     T === 10;
 
-    component p = Pow();
-    p.a <== 2;
-    p.b <== T;
+    // component p = Pow();
+    // p.a <== 2;
+    // p.b <== T;
 
-    signal r <== p.out;    
+    // signal r <== p.out;    
 
-    component pi_pow = Pow();
-    pi_pow.a <== pi;
-    pi_pow.b <== L;
+    // component pi_pow = Pow();
+    // pi_pow.a <== pi;
+    // pi_pow.b <== L;
 
-    component g_pow = Pow();
-    g_pow.a <== g;
-    g_pow.b <== r;
+    // component g_pow = Pow();
+    // g_pow.a <== g;
+    // g_pow.b <== r;
 
 
-    out <== (pi_pow.out * g_pow.out) % G;
+    // out <== (pi_pow.out * g_pow.out) % G;
 }
-
-component main = PietrzakVDF();
