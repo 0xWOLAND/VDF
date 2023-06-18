@@ -12,7 +12,7 @@ import { circuitContents } from "./circuits.mjs";
 
 await import("./downloadPtau.mjs");
 
-const circuits = Object.keys(circuitContents)
+const circuits = Object.keys(circuitContents);
 for (const circuit of circuits) {
   const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
 
@@ -34,7 +34,6 @@ for (const circuit of circuits) {
     .catch(() => false);
 
   if (!inputFileOutExists) {
-
     await fs.promises.writeFile(inputFileOut, circuitContents[circuit]);
   }
 

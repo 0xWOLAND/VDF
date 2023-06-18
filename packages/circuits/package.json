@@ -17,6 +17,7 @@
   "scripts": {
     "ptau": "node scripts/downloadPtau.mjs",
     "build": "node scripts/build.mjs",
-    "test": "mocha --exit"
+    "test": "mocha --exit",
+    "clear": "node scripts/clear.mjs"
   }
 }

@@ -1,6 +1,7 @@
 pragma circom 2.0.0;
 
 include "./circomlib/circuits/sha256/sha256.circom";
+include "./circomlib/circuits/comparators.circom";
 
 // a ^ b = out
 template Pow() {
@@ -11,8 +12,6 @@ template Pow() {
     // if (0 <= b && b <=  256) {
 
     // }
-
-    var G = 68581075343589469448887911292078473826007500147543722940774297817795477842213;
 
     signal x[256];
 
@@ -25,9 +24,7 @@ template Pow() {
     out <== b;
 }
 
-template PietrzakVDF() {
-
-    signal G <-- 68581075343589469448887911292078473826007500147543722940774297817795477842213;
+template PietrzakVDF(MIN_TIMESTAMP) {
 
     signal input y;
     signal input g;
@@ -35,9 +32,13 @@ template PietrzakVDF() {
     signal input L;
     signal input T;
     signal output out;
+    
+    component valid_t = GreaterEqThan(252);
+    valid_t.in[0] <== T;
+    valid_t.in[1] <== MIN_TIMESTAMP;
 
-    T === 10;
-
+    valid_t.out === 1;
+    // T === 10;
     // component p = Pow();
     // p.a <== 2;
     // p.b <== T;

@@ -11,22 +11,26 @@ describe("Example Proof", () => {
     console.log(r);
     console.log(await Prover.verifyProof(circuit, r.publicSignals, r.proof));
   });
-  // it("Pietrzack", async () => {
-  // const circuit = "pietrzak";
-  // const a = Array(32).fill(0);
-  // const r = await Prover.genProofAndPublicSignals(
-  // circuit,
-  // stringifyBigInts({ x: a })
-  // );
-  // const x = r.publicSignals;
-  // console.log(
-  // parseInt(
-  // x.reduce((acc, cur) => (acc += cur), ""),
-  // 2
-  // )
-  // .toString(16)
-  // .toUpperCase()
-  // );
-  // console.log(await Prover.verifyProof(circuit, r.publicSignals, r.proof));
-  // });
+  it("Pietrzack", async () => {
+    const circuit = "pietrzak";
+    const y = 0;
+    const g = 0;
+    const pi = 0;
+    const L = 0;
+    const T = 0;
+    const r = await Prover.genProofAndPublicSignals(
+      circuit,
+      stringifyBigInts({y, g, pi, L, T})
+    );
+    const x = r.publicSignals;
+    console.log(
+      parseInt(
+        x.reduce((acc, cur) => (acc += cur), ""),
+        2
+      )
+        .toString(16)
+        .toUpperCase()
+    );
+    console.log(await Prover.verifyProof(circuit, r.publicSignals, r.proof));
+  });
 });
