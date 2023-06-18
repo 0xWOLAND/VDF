@@ -1,0 +1,52 @@
+Arguments: 
+  /home/chndr1/.nvm/versions/node/v16.19.0/bin/node /home/chndr1/.nvm/versions/node/v16.19.0/bin/yarn build
+
+PATH: 
+  /home/chndr1/.nvm/versions/node/v16.19.0/bin:/home/chndr1/.vscode-server/bin/b3e4e68a0bc097f0ae7907b217c1119af9e03435/bin/remote-cli:/home/chndr1/.local/bin:/home/chndr1/.local/share/pnpm:/home/chndr1/.cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.7/bin:/mnt/c/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.7/libnvvp:/mnt/c/Program Files/Common Files/Oracle/Java/javapath:/mnt/c/Program Files (x86)/Common Files/Oracle/Java/javapath:/mnt/c/Program Files/National Instruments/Shared/OpenVINO/:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA NvDLISR:/mnt/c/MinGW/bin:/mnt/c/Program Files/Microsoft SQL Server/150/Tools/Binn/:/mnt/c/Program Files/nodejs/:/mnt/c/Program Files/dotnet/:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/NVIDIA Corporation/Nsight Compute 2022.2.0/:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/e/Program Files/PuTTY/:/mnt/c/Users/bharg/.cargo/bin:/mnt/c/Users/bharg/AppData/Local/Programs/Python/Python310/Scripts/:/mnt/c/Users/bharg/AppData/Local/Programs/Python/Python310/:/mnt/c/Users/bharg/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/bharg/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Program Files/Sublime Text 3:/mnt/c/Program Files/JetBrains/CLion 2021.3.3/bin:/mnt/c/Users/bharg/AppData/Roaming/npm:/mnt/c/Program Files/CMake/bin:/snap/bin:/bin
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  16.19.0
+
+Platform: 
+  linux x64
+
+Trace: 
+  SyntaxError: /home/chndr1/VDF/packages/circuits/package.json: Unexpected string in JSON at position 517
+      at JSON.parse (<anonymous>)
+      at /home/chndr1/.nvm/versions/node/v16.19.0/lib/node_modules/yarn/lib/cli.js:1629:59
+      at Generator.next (<anonymous>)
+      at step (/home/chndr1/.nvm/versions/node/v16.19.0/lib/node_modules/yarn/lib/cli.js:310:30)
+      at /home/chndr1/.nvm/versions/node/v16.19.0/lib/node_modules/yarn/lib/cli.js:321:13
+
+npm manifest: 
+  {
+    "name": "@pietrzak-vdf/circuits",
+    "version": "1.0.0",
+    "description": "Pietrzak VDF Circuit",
+    "main": "index.js",
+    "repository": "https://github.com/chndr1/VDF",
+    "author": "Bhargav Annem",
+    "license": "MIT",
+    "dependencies": {
+      "abort-controller": "^3.0.0",
+      "child_process": "^1.0.2",
+      "drand-client": "^1.1.0",
+      "node-fetch": "^3.3.1",
+      "snarkjs": "^0.7.0"
+    },
+    "type": "commonjs",
+    "scripts": {
+      "ptau": "node scripts/downloadPtau.mjs",
+      "build": "node scripts/build.mjs"
+      "test": "mocha"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

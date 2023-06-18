@@ -4,8 +4,9 @@ import https from "https";
 import readline from "readline";
 import fs from "fs";
 import os from "os";
+import { ptauName } from "./circuits.mjs";
+import { copyAndDelete } from "./copyAndDelete.mjs";
 
-const ptauName = "powersOfTau28_hez_final_18.ptau";
 const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
 
 const outDir = path.join(__dirname, "../build");
@@ -55,11 +56,5 @@ if (!ptauExists) {
       }
     );
   });
-  await fs.copyFile(tmp, ptau, (err) => {
-    if (err) console.error(err);
-  });
-  console.log(tmp);
-  await fs.unlink(tmp, (err) => {
-    if (err) console.error(err);
-  });
+  await copyAndDelete(tmp, ptau);
 }

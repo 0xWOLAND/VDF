@@ -16,6 +16,6 @@
   },
   "type": "commonjs",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha --exit"
   }
 }

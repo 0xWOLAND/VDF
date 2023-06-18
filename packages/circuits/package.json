@@ -8,11 +8,16 @@
   "license": "MIT",
   "dependencies": {
     "abort-controller": "^3.0.0",
+    "child_process": "^1.0.2",
     "drand-client": "^1.1.0",
-    "node-fetch": "^3.3.1"
+    "node-fetch": "^3.3.1",
+    "snarkjs": "^0.7.0"
   },
   "type": "commonjs",
   "scripts": {
-    "build": "node scripts/build.mjs"
+    "ptau": "node scripts/downloadPtau.mjs",
+    "build": "node scripts/build.mjs",
+    "test": "mocha --exit",
+    "clear": "node scripts/clear.mjs"
   }
 }
